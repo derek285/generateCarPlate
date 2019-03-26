@@ -1,8 +1,7 @@
 # generateCarPlate
 生成车牌识别 ocr识别训练数据
 generate Car Plate data for PR/OCR training
-
-### 国内蓝色普通车牌生成脚本，忘了参考过哪里的代码，黄的绿的参考一下按需自己随意
+国内蓝色普通车牌生成，忘了参考过哪里的代码，其他类型牌照参考一下按需自己随意
 
 ## 想法：
 ```
