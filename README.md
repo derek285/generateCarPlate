@@ -1,7 +1,7 @@
 # generateCarPlate
 generate Car Plate data for PR/OCR training
 
-## 国内蓝色普通车牌生成脚本，忘了参考过哪里的代码
+### 国内蓝色普通车牌生成脚本，忘了参考过哪里的代码
 
 ## 想法：
 1.把生成的字符串写到蓝色车牌模版照片上，生成车牌；
