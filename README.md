@@ -29,6 +29,7 @@ python genCarPlate.py
 --为了使得车牌占比约为80% 设置车牌大小为(220, 70)，按需自己随意
 --每个省份生成照片数量设置IMG_COUNT_PER_PROVINCE = 随意
 --为了使得每个省份中每个城市的车牌数量均衡，即车牌汉字后的第一个字母在24个字母中分布平均，
+   这个地方写的很山寨，看明白了自己修修改改好了，O(∩_∩)O哈哈~
    参见 genplate.py：38行
    i = iter // IMG_COUNT_PER_PROVINCE
    iterChar = (iter % IMG_COUNT_PER_PROVINCE) // 9
