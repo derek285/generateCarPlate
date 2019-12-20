@@ -1,16 +1,7 @@
 #coding=utf-8
 
-import os
-# import sys
-import numpy as np
-import cv2
 import argparse
-# import PIL
 from PIL import ImageFont
-from PIL import Image
-from PIL import ImageDraw
-from math import *
-
 from PlateCommon import *
 
 TEMPLATE_IMAGE = "./template/template.bmp"
@@ -28,15 +19,15 @@ class GenPlateScene:
             for filename in filenames:
                 self.noplates_path.append(parent + "/" + filename)
 
-    def gen_plate_string(self, iter):
+    def gen_plate_string(self, iter, perSize):
         plate_str = ""
-        i = iter // IMG_COUNT_PER_PROVINCE
-        iterChar = (iter % IMG_COUNT_PER_PROVINCE) // 9
+        i = iter // perSize
+        # iterChar = (iter % perSize) // 9
         for cpos in range(7):
             if cpos == 0:
                 plate_str += chars[i] #+r(31)]
             elif cpos == 1:
-                plate_str += chars[41 + iterChar]#+r(24)]
+                plate_str += chars[41 + r(24)]
             else:
                 plate_str += chars[31 + r(34)]
         return plate_str
@@ -46,14 +37,14 @@ class GenPlateScene:
         self.img[0:70, offset+8:offset+8+23] = GenCh(self.fontC, val[0])
         self.img[0:70, offset+8+23+6:offset+8+23+6+23] = GenCh1(self.fontE, val[1])
         for i in range(5):
-            base = offset+8+23+6+23+17+i*23+i*6 
+            base = offset+8+23+6+23+17+i*23+i*6
             self.img[0:70, base:base+23]= GenCh1(self.fontE, val[i+2])
         return self.img
 
     def generate(self,text):
-        print text, len(text)
-
-        fg = self.draw(text.decode(encoding="utf-8"))   # 得到白底黑字
+        print(text + " " + str(len(text)))
+        
+        fg = self.draw(text)   # 得到白底黑字
         # cv2.imwrite('01.jpg', fg)
         fg = cv2.bitwise_not(fg)    # 得到黑底白字
         # cv2.imwrite('02.jpg', fg)
@@ -76,13 +67,13 @@ class GenPlateScene:
         # cv2.imwrite('09.jpg', com)
         return com, loc
 
-    def gen_batch(self, batchSize, outDir):
+    def gen_batch(self, perSize, outDir):
 
-        for i in xrange(batchSize):
-            outputPath = outDir + str(i // IMG_COUNT_PER_PROVINCE) + "/"
+        for i in range(perSize*31-1):
+            outputPath = outDir + str(i // perSize) + "/"
             if (not os.path.exists(outputPath)):
                 os.mkdir(outputPath)
-            plate_str = self.gen_plate_string(i)
+            plate_str = self.gen_plate_string(i, perSize)
             img, loc =  self.generate(plate_str)
             if img is None:
                 continue
@@ -93,20 +84,15 @@ class GenPlateScene:
 
 def parse_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument('gen_count_per_province', type=int, help='gen car plt num for per_province')
     parser.add_argument('--bg_dir', default='./Background', help='bg_img dir')
-    parser.add_argument('--out_dir', default='./gen_data/', help='output dir')
-    parser.add_argument('--make_num', default=IMG_COUNT_PER_PROVINCE*31-1, type=int, help='num')
+    parser.add_argument('--out_dir', default='./gen_res/', help='output dir')
+    
     return parser.parse_args()
 
 def main(args):
     G = GenPlateScene("./font/platech.ttf", './font/platechar.ttf', args.bg_dir)
-    G.gen_batch(args.make_num, args.out_dir)
-
+    G.gen_batch(args.gen_count_per_province, args.out_dir)
 
 if __name__ == '__main__':
-    IMG_COUNT_PER_PROVINCE = 16
     main(parse_args())
-
-
-
-
