@@ -1,11 +1,16 @@
+
+
 # generate_car_plate
+
 ```
 生成车牌识别/OCR识别训练数据
 generate Car Plate dataset for PR/OCR training
 国内蓝色普通车牌生成，忘了参考过哪里的代码，其他类型牌照参考一下按随意
 ```
-![image](./imgs/京B7ETX8.jpg) ![image](./imgs/湘A1URPU.jpg)
-![image](./imgs/湘BNGG7C.jpg) ![image](./imgs/藏A8YLX1.jpg)
+![image](./imgs/京B7ETX8.jpg) 
+![image](./imgs/湘A1URPU.jpg)
+![image](./imgs/湘BNGG7C.jpg)
+![image](./imgs/藏A8YLX1.jpg)
 ![image](./imgs/赣AVFLJ7.jpg)
 
 ## todo：
