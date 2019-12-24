@@ -28,7 +28,7 @@ generate Car Plate dataset for PR/OCR training
 ```
 ## use：
 ```
-python genCarPlate.py
+python genCarPlate.py 100
 ```
 ## param：
 ```
