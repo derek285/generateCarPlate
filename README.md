@@ -5,7 +5,7 @@
 ```
 生成车牌识别/OCR识别训练数据
 generate Car Plate dataset for PR/OCR training
-国内蓝色普通车牌生成，忘了参考过哪里的代码，其他类型牌照参考一下按随意
+国内蓝色普通车牌生成，忘了参考过哪里的代码，其他类型牌照参考一下按需随意
 ```
 ![image](./imgs/京B7ETX8.jpg) 
 ![image](./imgs/湘A1URPU.jpg)
@@ -35,8 +35,4 @@ python genCarPlate.py 100
 --每个省份生成车牌图像数量：gen_count_per_province=随意
 --根据自己的训练要求，图像大小即背景照片(Background/)设置为了256*128，按需随意
 --为了使得车牌占比约为80% 设置车牌大小为(220, 70)，按需随意
-```
-## license：
-```
-没有，拿去随便造作
 ```
