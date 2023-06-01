@@ -72,7 +72,7 @@ class GenPlateScene:
         for i in range(perSize*31-1):
             outputPath = outDir + str(i // perSize) + "/"
             if (not os.path.exists(outputPath)):
-                os.mkdir(outputPath)
+                os.makedirs(outputPath)
             plate_str = self.gen_plate_string(i, perSize)
             img, loc =  self.generate(plate_str)
             if img is None:
